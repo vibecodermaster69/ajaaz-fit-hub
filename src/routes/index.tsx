@@ -113,7 +113,7 @@ function Index() {
               "Certified in nutrition and fitness training",
               "150+ clients coached online and offline",
               "Plans built around Indian home food and real schedules",
-              "Free workout and nutrition content on YouTube",
+              "Free workout and nutrition content on Instagram",
             ].map((point) => (
               <li key={point} className="flex gap-3 text-sm text-muted-foreground">
                 <Check className="mt-0.5 size-4 shrink-0 text-accent" />
