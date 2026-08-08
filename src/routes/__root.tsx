@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { SmoothScroll } from "@/components/site/SmoothScroll";
+import { AnimatedBackground } from "@/components/site/AnimatedBackground";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -141,6 +142,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SmoothScroll />
+      <AnimatedBackground />
       <div className="flex min-h-screen flex-col">
         <Header />
         <main className="flex-1">

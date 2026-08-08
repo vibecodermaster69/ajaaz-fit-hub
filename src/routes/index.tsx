@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
-import { Youtube, Check, Dumbbell, Salad, Flame } from "lucide-react";
+import { Instagram, Check, Dumbbell, Salad, Flame } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import coachImg from "@/assets/coach.jpg";
 import gallery1 from "@/assets/gallery/gallery-01.jpg";
@@ -372,12 +372,12 @@ function HeroSection() {
             View packages
           </Link>
           <a
-            href={SITE.youtube}
+            href={SITE.instagram}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-sm border border-accent/60 px-8 py-4 text-sm font-bold uppercase tracking-widest text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
           >
-            <Youtube className="size-4" /> Watch on YouTube
+            <Instagram className="size-4" /> Follow on Instagram
           </a>
         </motion.div>
       </div>
