@@ -4,10 +4,19 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { Youtube, Check, Dumbbell, Salad, Flame } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import coachImg from "@/assets/coach.jpg";
+import gallery1 from "@/assets/gallery/gallery-01.jpg";
+import gallery2 from "@/assets/gallery/gallery-02.jpg";
+import gallery3 from "@/assets/gallery/gallery-03.jpg";
+import gallery4 from "@/assets/gallery/gallery-04.jpg";
+import gallery5 from "@/assets/gallery/gallery-05.jpg";
+import gallery6 from "@/assets/gallery/gallery-06.jpg";
+import methodImg from "@/assets/gallery/method.jpg";
 import { SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { AnimatedCounter } from "@/components/site/AnimatedCounter";
-import { SITE, SERVICES, PACKAGES, FAQS } from "@/data/site";
+import { ReelCard } from "@/components/site/ReelCard";
+import { InstagramFollowButton } from "@/components/site/InstagramFollowButton";
+import { SITE, SERVICES, PACKAGES, FAQS, REELS } from "@/data/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,6 +47,15 @@ const STATS: {
   { value: 100, suffix: "%", label: "Custom plans" },
   { value: 7, suffix: " Days", label: "Weekly support" },
   { value: null, display: "Certified", label: "Nutrition & training" },
+];
+
+const GALLERY = [
+  { image: gallery1, caption: "Progressive overload, tracked every session" },
+  { image: gallery2, caption: "Real client sessions, not stock photography" },
+  { image: gallery3, caption: "Form checked on every heavy set" },
+  { image: gallery4, caption: "Strength built the disciplined way" },
+  { image: gallery5, caption: "Conditioning work between lifts" },
+  { image: gallery6, caption: "Consistency you can see, week over week" },
 ];
 
 function Index() {
@@ -82,7 +100,11 @@ function Index() {
         <div>
           <SectionHeading
             eyebrow="Meet your coach"
-            title={<>Coached by <span className="text-gradient-gold">Ajaaz</span></>}
+            title={
+              <>
+                Coached by <span className="text-gradient-gold">Ajaaz</span>
+              </>
+            }
             subtitle="A certified nutritionist and fitness coach who has worked with over 150 clients across body recomposition, strength and everyday health goals."
           />
           <ul className="mt-7 space-y-3">
@@ -101,12 +123,78 @@ function Index() {
         </div>
       </section>
 
+      {/* Gallery */}
+      <section className="section-shell py-24">
+        <SectionHeading
+          eyebrow="In the gym"
+          title={
+            <>
+              Coaching you can <span className="text-gradient-gold">see</span>
+            </>
+          }
+          subtitle="Every photo below is Ajaaz coaching real sessions — not stock imagery."
+        />
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {GALLERY.map((g, i) => (
+            <Reveal
+              key={g.caption}
+              delay={(i % 3) * 0.1}
+              className="group relative overflow-hidden rounded-md border border-border"
+            >
+              <img
+                src={g.image}
+                alt={g.caption}
+                loading="lazy"
+                className="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-transparent" />
+              <p className="absolute inset-x-0 bottom-0 p-4 text-sm font-semibold text-foreground">
+                {g.caption}
+              </p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* The Method */}
+      <section className="border-t border-border bg-card/40 py-24">
+        <div className="section-shell">
+          <SectionHeading
+            eyebrow="The method"
+            title={
+              <>
+                Not luck — a <span className="text-gradient-gold">system</span>
+              </>
+            }
+            subtitle="Training, nutrition, recovery and lifestyle, working together. This is the exact framework behind every client plan."
+          />
+          <Reveal delay={0.1} className="mt-10 overflow-hidden rounded-md border border-border">
+            <img
+              src={methodImg}
+              alt="Infographic: the science behind Coach Ajaaz's transformation method — training, nutrition, recovery and lifestyle"
+              loading="lazy"
+              className="w-full object-cover"
+            />
+          </Reveal>
+          <Link
+            to="/packages"
+            className="mt-10 inline-block text-sm font-bold uppercase tracking-widest text-accent underline-offset-8 hover:underline"
+          >
+            Get this system for yourself →
+          </Link>
+        </div>
+      </section>
+
       {/* Services preview */}
       <section className="border-t border-border bg-card/40 py-24">
         <div className="section-shell">
           <SectionHeading
             eyebrow="Services"
-            title={<>Training, nutrition, <span className="text-gradient-gold">accountability</span></>}
+            title={
+              <>
+                Training, nutrition, <span className="text-gradient-gold">accountability</span>
+              </>
+            }
           />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {SERVICES.slice(0, 3).map((s, i) => {
@@ -136,7 +224,11 @@ function Index() {
       <section className="section-shell py-24">
         <SectionHeading
           eyebrow="Packages"
-          title={<>Pick your <span className="text-gradient-gold">duration</span></>}
+          title={
+            <>
+              Pick your <span className="text-gradient-gold">duration</span>
+            </>
+          }
           subtitle="No online payments — enquire and Ajaaz shares pricing personally."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -149,9 +241,13 @@ function Index() {
                   : "rounded-md border border-border bg-card p-7"
               }
             >
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">{p.duration}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
+                {p.duration}
+              </p>
               <h3 className="mt-2 text-3xl uppercase">{p.name}</h3>
-              <p className="mt-3 text-sm text-muted-foreground">{p.features.slice(0, 3).join(" · ")}</p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                {p.features.slice(0, 3).join(" · ")}
+              </p>
             </div>
           ))}
         </div>
@@ -161,6 +257,27 @@ function Index() {
         >
           Compare packages →
         </Link>
+      </section>
+
+      {/* Reels */}
+      <section className="section-shell py-24">
+        <SectionHeading
+          eyebrow="Watch"
+          title={
+            <>
+              Reels worth your <span className="text-gradient-gold">30 seconds</span>
+            </>
+          }
+          subtitle="A few clips clients keep coming back to."
+        />
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          {REELS.map((reel, i) => (
+            <ReelCard key={reel.url} reel={reel} delay={i * 0.1} />
+          ))}
+        </div>
+        <div className="mt-10 flex justify-center">
+          <InstagramFollowButton />
+        </div>
       </section>
 
       {/* FAQ preview + CTA */}
@@ -189,8 +306,8 @@ function Index() {
               Ready to <span className="text-gradient-gold">start</span>?
             </h2>
             <p className="mt-4 text-sm text-muted-foreground">
-              Send Ajaaz your goal and current routine. He'll reply with the right package,
-              pricing and a starting plan.
+              Send Ajaaz your goal and current routine. He'll reply with the right package, pricing
+              and a starting plan.
             </p>
             <Link
               to="/contact"
