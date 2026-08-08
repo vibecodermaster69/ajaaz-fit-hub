@@ -90,9 +90,9 @@ function Index() {
           <div className="absolute -inset-3 rounded-md bg-primary/25 blur-2xl" />
           <img
             src={coachImg}
-            alt="Coach Ajaaz, certified nutritionist and fitness trainer"
-            width={1024}
-            height={1280}
+            alt="Coach Ajaaz, certified nutritionist and fitness trainer, in the gym"
+            width={738}
+            height={1314}
             loading="lazy"
             className="relative rounded-md border border-border object-cover"
           />
