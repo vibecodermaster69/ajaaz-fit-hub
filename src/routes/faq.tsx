@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SectionHeading } from "@/components/site/Section";
+import { Reveal } from "@/components/site/Reveal";
 import { FAQS } from "@/data/site";
 
 export const Route = createFileRoute("/faq")({
@@ -46,26 +47,35 @@ function FaqPage() {
     <div className="section-shell py-20">
       <SectionHeading
         eyebrow="Questions"
-        title={<>Before you <span className="text-gradient-gold">start</span></>}
+        title={
+          <>
+            Before you <span className="text-gradient-gold">start</span>
+          </>
+        }
         subtitle="Everything clients usually ask before their first week of coaching."
       />
 
-      <Accordion type="single" collapsible className="mt-12 max-w-3xl">
-        {FAQS.map((faq, i) => (
-          <AccordionItem key={faq.q} value={`item-${i}`} className="border-border">
-            <AccordionTrigger className="text-left text-base font-semibold hover:text-accent">
-              {faq.q}
-            </AccordionTrigger>
-            <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-              {faq.a}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+      <Reveal>
+        <Accordion type="single" collapsible className="mt-12 max-w-3xl">
+          {FAQS.map((faq, i) => (
+            <AccordionItem key={faq.q} value={`item-${i}`} className="border-border">
+              <AccordionTrigger className="text-left text-base font-semibold hover:text-accent">
+                {faq.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
+                {faq.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </Reveal>
 
       <p className="mt-12 text-sm text-muted-foreground">
         Still unsure?{" "}
-        <Link to="/contact" className="font-semibold text-accent underline-offset-4 hover:underline">
+        <Link
+          to="/contact"
+          className="font-semibold text-accent underline-offset-4 hover:underline"
+        >
           Send Ajaaz your question
         </Link>
         .
