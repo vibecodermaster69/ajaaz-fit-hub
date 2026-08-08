@@ -9,7 +9,7 @@ export const SITE = {
   youtube: "https://www.youtube.com/@ajaaz.fitmode",
   email: "ansariajaaz9@gmail.com",
   instagram: "https://www.instagram.com/ajaaz.fitmode?igsh=MXR5MDNlMTQ5dGtiNg==",
-  whatsapp: "+910000000000",
+  whatsapp: "+919930094758",
   clientsServed: "150+",
 };
 
