@@ -70,7 +70,11 @@ function Index() {
         <div className="section-shell grid grid-cols-2 gap-8 py-12 lg:grid-cols-4">
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08}>
-              <p className="font-display text-5xl text-accent">
+              <p
+                className={`font-display text-accent leading-none ${
+                  s.display ? "text-3xl min-[400px]:text-4xl sm:text-5xl" : "text-4xl sm:text-5xl"
+                }`}
+              >
                 {s.value !== null ? (
                   <AnimatedCounter value={s.value} suffix={s.suffix} />
                 ) : (
@@ -112,7 +116,9 @@ function Index() {
             {[
               "Certified in nutrition and fitness training",
               "150+ clients coached online and offline",
+              "Plans custom-built around your current health status and medical history",
               "Plans built around Indian home food and real schedules",
+              "Focused on natural and organic methods, without depending on supplements",
               "Free workout and nutrition content on Instagram",
             ].map((point) => (
               <li key={point} className="flex gap-3 text-sm text-muted-foreground">
