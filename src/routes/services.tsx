@@ -35,7 +35,7 @@ function ServicesPage() {
 
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {SERVICES.map((service, i) => {
-          const Icon = ICONS[i % ICONS.length];
+          const Icon = ICONS[i % ICONS.length]!;
           return (
             <article
               key={service.title}
