@@ -15,6 +15,7 @@ import { SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { AnimatedCounter } from "@/components/site/AnimatedCounter";
 import { ReelCard } from "@/components/site/ReelCard";
+import { PhotoFan } from "@/components/site/PhotoFan";
 import { InstagramFollowButton } from "@/components/site/InstagramFollowButton";
 import { SITE, SERVICES, PACKAGES, FAQS, REELS } from "@/data/site";
 
@@ -102,7 +103,7 @@ function Index() {
             eyebrow="Meet your coach"
             title={
               <>
-                Coached by <span className="text-gradient-gold">Ajaaz</span>
+                Ajaaz as a <span className="text-gradient-gold">Coach</span>
               </>
             }
             subtitle="A certified nutritionist and fitness coach who has worked with over 150 clients across body recomposition, strength and everyday health goals."
@@ -134,26 +135,7 @@ function Index() {
           }
           subtitle="Every photo below is Ajaaz coaching real sessions — not stock imagery."
         />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {GALLERY.map((g, i) => (
-            <Reveal
-              key={g.caption}
-              delay={(i % 3) * 0.1}
-              className="group relative overflow-hidden rounded-md border border-border"
-            >
-              <img
-                src={g.image}
-                alt={g.caption}
-                loading="lazy"
-                className="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-transparent to-transparent" />
-              <p className="absolute inset-x-0 bottom-0 p-4 text-sm font-semibold text-foreground">
-                {g.caption}
-              </p>
-            </Reveal>
-          ))}
-        </div>
+        <PhotoFan photos={GALLERY} />
       </section>
 
       {/* The Method */}
@@ -270,12 +252,12 @@ function Index() {
           }
           subtitle="A few clips clients keep coming back to."
         />
-        <div className="mt-16 flex justify-center pb-6">
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
           {REELS.map((reel, i) => (
-            <ReelCard key={reel.url} reel={reel} index={i} total={REELS.length} />
+            <ReelCard key={reel.url} reel={reel} delay={i * 0.1} />
           ))}
         </div>
-        <div className="mt-14 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <InstagramFollowButton />
         </div>
       </section>
