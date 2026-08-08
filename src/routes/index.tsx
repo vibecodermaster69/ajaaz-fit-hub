@@ -339,7 +339,7 @@ function HeroSection() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="block"
           >
-            Build the body
+            Build the strongest
           </motion.span>
           <motion.span
             initial={{ opacity: 0, y: 24 }}
@@ -347,7 +347,7 @@ function HeroSection() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="block text-gradient-gold"
           >
-            discipline deserves
+            version of yourself
           </motion.span>
         </h1>
         <motion.p
