@@ -60,7 +60,7 @@ function PackagesPage() {
               >
                 {pkg.tag}
               </span>
-              <h3 className="mt-5 break-words text-3xl uppercase sm:text-4xl">{pkg.name}</h3>
+              <h3 className="mt-5 text-2xl xl:text-3xl uppercase">{pkg.name}</h3>
               <p className="mt-1 text-sm font-semibold uppercase tracking-widest text-accent">
                 {pkg.duration}
               </p>

@@ -225,7 +225,7 @@ function Index() {
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
                   {p.duration}
                 </p>
-                <h3 className="mt-2 break-words text-3xl uppercase">{p.name}</h3>
+                <h3 className="mt-2 text-2xl xl:text-3xl uppercase">{p.name}</h3>
                 <p className="mt-3 text-sm text-muted-foreground">
                   {p.features.slice(0, 3).join(" · ")}
                 </p>
