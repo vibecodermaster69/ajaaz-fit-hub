@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-display: "Hinato", sans-serif;
-  --font-sans: "Hinato", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Gluten", sans-serif;
+  --font-sans: "Gluten", ui-sans-serif, system-ui, sans-serif;
 }
 
 /*
