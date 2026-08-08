@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X, Flame } from "lucide-react";
+import { Menu, X, Flame, Instagram } from "lucide-react";
 import { SITE } from "@/data/site";
 
 const NAV = [
@@ -39,6 +39,15 @@ export function Header() {
             </Link>
           ))}
           <a
+            href={SITE.instagram}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Ajaaz Fitmode on Instagram"
+            className="text-muted-foreground transition-colors hover:text-accent"
+          >
+            <Instagram className="size-5" />
+          </a>
+          <a
             href={SITE.youtube}
             target="_blank"
             rel="noreferrer"
@@ -48,11 +57,7 @@ export function Header() {
           </a>
         </nav>
 
-        <button
-          className="md:hidden"
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-        >
+        <button className="md:hidden" aria-label="Toggle menu" onClick={() => setOpen((v) => !v)}>
           {open ? <X className="size-6" /> : <Menu className="size-6" />}
         </button>
       </div>
