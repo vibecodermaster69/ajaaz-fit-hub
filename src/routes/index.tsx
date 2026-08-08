@@ -270,12 +270,12 @@ function Index() {
           }
           subtitle="A few clips clients keep coming back to."
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-16 flex justify-center pb-6">
           {REELS.map((reel, i) => (
-            <ReelCard key={reel.url} reel={reel} delay={i * 0.1} />
+            <ReelCard key={reel.url} reel={reel} index={i} total={REELS.length} />
           ))}
         </div>
-        <div className="mt-10 flex justify-center">
+        <div className="mt-14 flex justify-center">
           <InstagramFollowButton />
         </div>
       </section>
