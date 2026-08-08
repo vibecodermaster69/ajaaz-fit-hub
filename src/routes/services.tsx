@@ -42,8 +42,8 @@ function ServicesPage() {
         {SERVICES.map((service, i) => {
           const Icon = ICONS[i % ICONS.length]!;
           return (
-            <Reveal key={service.title} delay={i * 0.06}>
-              <article className="group relative overflow-hidden rounded-md border border-border bg-card p-7 transition-colors hover:border-accent">
+            <Reveal key={service.title} delay={i * 0.06} className="h-full">
+              <article className="group relative h-full overflow-hidden rounded-md border border-border bg-card p-7 transition-colors hover:border-accent">
                 <span className="absolute -right-6 -top-6 size-24 rounded-full bg-primary/25 blur-2xl transition-opacity group-hover:opacity-100" />
                 <Icon className="size-8 text-accent" />
                 <h3 className="mt-5 text-2xl uppercase">{service.title}</h3>

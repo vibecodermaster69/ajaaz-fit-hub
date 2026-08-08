@@ -86,7 +86,7 @@ function Index() {
 
       {/* Coach */}
       <section className="section-shell grid gap-12 py-24 lg:grid-cols-2 lg:items-center">
-        <div className="relative">
+        <Reveal className="relative">
           <div className="absolute -inset-3 rounded-md bg-primary/25 blur-2xl" />
           <img
             src={coachImg}
@@ -94,10 +94,10 @@ function Index() {
             width={738}
             height={1314}
             loading="lazy"
-            className="relative rounded-md border border-border object-cover"
+            className="relative aspect-[4/5] w-full rounded-md border border-border object-cover"
           />
-        </div>
-        <div>
+        </Reveal>
+        <Reveal delay={0.1}>
           <SectionHeading
             eyebrow="Meet your coach"
             title={
@@ -120,7 +120,7 @@ function Index() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </section>
 
       {/* Gallery */}
@@ -200,14 +200,13 @@ function Index() {
             {SERVICES.slice(0, 3).map((s, i) => {
               const Icon = [Dumbbell, Salad, Flame][i]!;
               return (
-                <article
-                  key={s.title}
-                  className="rounded-md border border-border bg-card p-7 transition-colors hover:border-accent"
-                >
-                  <Icon className="size-8 text-accent" />
-                  <h3 className="mt-5 text-2xl uppercase">{s.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground">{s.body}</p>
-                </article>
+                <Reveal key={s.title} delay={i * 0.08} className="h-full">
+                  <article className="h-full rounded-md border border-border bg-card p-7 transition-colors hover:border-accent">
+                    <Icon className="size-8 text-accent" />
+                    <h3 className="mt-5 text-2xl uppercase">{s.title}</h3>
+                    <p className="mt-3 text-sm text-muted-foreground">{s.body}</p>
+                  </article>
+                </Reveal>
               );
             })}
           </div>
@@ -232,23 +231,24 @@ function Index() {
           subtitle="No online payments — enquire and Ajaaz shares pricing personally."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {PACKAGES.map((p) => (
-            <div
-              key={p.name}
-              className={
-                p.featured
-                  ? "rounded-md border-2 border-accent bg-secondary p-7"
-                  : "rounded-md border border-border bg-card p-7"
-              }
-            >
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
-                {p.duration}
-              </p>
-              <h3 className="mt-2 text-3xl uppercase">{p.name}</h3>
-              <p className="mt-3 text-sm text-muted-foreground">
-                {p.features.slice(0, 3).join(" · ")}
-              </p>
-            </div>
+          {PACKAGES.map((p, i) => (
+            <Reveal key={p.name} delay={i * 0.08} className="h-full">
+              <div
+                className={
+                  p.featured
+                    ? "h-full rounded-md border-2 border-accent bg-secondary p-7"
+                    : "h-full rounded-md border border-border bg-card p-7"
+                }
+              >
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
+                  {p.duration}
+                </p>
+                <h3 className="mt-2 break-words text-3xl uppercase">{p.name}</h3>
+                <p className="mt-3 text-sm text-muted-foreground">
+                  {p.features.slice(0, 3).join(" · ")}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
         <Link
@@ -283,7 +283,7 @@ function Index() {
       {/* FAQ preview + CTA */}
       <section className="border-t border-border bg-card/40 py-24">
         <div className="section-shell grid gap-12 lg:grid-cols-2">
-          <div>
+          <Reveal>
             <SectionHeading eyebrow="FAQ" title="Quick answers" />
             <div className="mt-8 space-y-6">
               {FAQS.slice(0, 3).map((f) => (
@@ -299,9 +299,12 @@ function Index() {
             >
               Read the full FAQ →
             </Link>
-          </div>
+          </Reveal>
 
-          <div className="flex flex-col justify-center rounded-md border border-accent/40 bg-secondary p-10">
+          <Reveal
+            delay={0.1}
+            className="flex flex-col justify-center rounded-md border border-accent/40 bg-secondary p-10"
+          >
             <h2 className="text-4xl uppercase leading-none">
               Ready to <span className="text-gradient-gold">start</span>?
             </h2>
@@ -315,7 +318,7 @@ function Index() {
             >
               Get in touch
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

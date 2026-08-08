@@ -39,12 +39,16 @@ function PackagesPage() {
 
       <div className="mt-14 grid gap-6 lg:grid-cols-3">
         {PACKAGES.map((pkg, i) => (
-          <Reveal key={pkg.name} delay={i * 0.08}>
+          <Reveal
+            key={pkg.name}
+            delay={i * 0.08}
+            className={pkg.featured ? "h-full lg:-mt-4 lg:mb-4" : "h-full"}
+          >
             <article
               className={
                 pkg.featured
-                  ? "relative rounded-md border-2 border-accent bg-secondary p-8 lg:-mt-4 lg:mb-4"
-                  : "relative rounded-md border border-border bg-card p-8"
+                  ? "relative flex h-full flex-col rounded-md border-2 border-accent bg-secondary p-8"
+                  : "relative flex h-full flex-col rounded-md border border-border bg-card p-8"
               }
             >
               <span
@@ -61,7 +65,7 @@ function PackagesPage() {
                 {pkg.duration}
               </p>
 
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-6 flex-1 space-y-3">
                 {pkg.features.map((f) => (
                   <li key={f} className="flex gap-3 text-sm text-muted-foreground">
                     <Check className="mt-0.5 size-4 shrink-0 text-accent" />
