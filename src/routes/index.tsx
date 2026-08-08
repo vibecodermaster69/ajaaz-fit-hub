@@ -1,8 +1,12 @@
+import { useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion, useScroll, useTransform } from "motion/react";
 import { Youtube, Check, Dumbbell, Salad, Flame } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import coachImg from "@/assets/coach.jpg";
 import { SectionHeading } from "@/components/site/Section";
+import { Reveal } from "@/components/site/Reveal";
+import { AnimatedCounter } from "@/components/site/AnimatedCounter";
 import { SITE, SERVICES, PACKAGES, FAQS } from "@/data/site";
 
 export const Route = createFileRoute("/")({
@@ -24,67 +28,40 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const STATS = [
-  { value: SITE.clientsServed, label: "Clients coached" },
-  { value: "100%", label: "Custom plans" },
-  { value: "7 Days", label: "Weekly support" },
-  { value: "Certified", label: "Nutrition & training" },
+const STATS: {
+  label: string;
+  value: number | null;
+  suffix?: string;
+  display?: string;
+}[] = [
+  { value: 150, suffix: "+", label: "Clients coached" },
+  { value: 100, suffix: "%", label: "Custom plans" },
+  { value: 7, suffix: " Days", label: "Weekly support" },
+  { value: null, display: "Certified", label: "Nutrition & training" },
 ];
 
 function Index() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Athlete performing a heavy deadlift in a dark gym"
-          width={1600}
-          height={1200}
-          className="absolute inset-0 size-full object-cover object-center opacity-45"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
-        <div className="section-shell relative flex min-h-[88vh] flex-col justify-center py-24">
-          <p className="text-xs font-bold uppercase tracking-[0.4em] text-accent">
-            {SITE.tagline}
-          </p>
-          <h1 className="mt-5 max-w-3xl text-6xl uppercase leading-[0.9] sm:text-7xl lg:text-8xl">
-            Build the body <br />
-            <span className="text-gradient-gold">discipline</span> deserves
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Coach Ajaaz has guided {SITE.clientsServed} clients through fat loss, muscle gain and
-            sustainable nutrition — with plans built around real schedules and real food.
-          </p>
-          <div className="mt-9 flex flex-wrap gap-4">
-            <Link
-              to="/packages"
-              className="rounded-sm bg-accent px-8 py-4 text-sm font-bold uppercase tracking-widest text-accent-foreground transition-transform hover:scale-105"
-            >
-              View packages
-            </Link>
-            <a
-              href={SITE.youtube}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-sm border border-accent/60 px-8 py-4 text-sm font-bold uppercase tracking-widest text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
-            >
-              <Youtube className="size-4" /> Watch on YouTube
-            </a>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Stats */}
       <section className="border-y border-border bg-secondary">
         <div className="section-shell grid grid-cols-2 gap-8 py-12 lg:grid-cols-4">
-          {STATS.map((s) => (
-            <div key={s.label}>
-              <p className="font-display text-5xl text-accent">{s.value}</p>
+          {STATS.map((s, i) => (
+            <Reveal key={s.label} delay={i * 0.08}>
+              <p className="font-display text-5xl text-accent">
+                {s.value !== null ? (
+                  <AnimatedCounter value={s.value} suffix={s.suffix} />
+                ) : (
+                  s.display
+                )}
+              </p>
               <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 {s.label}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -225,5 +202,83 @@ function Index() {
         </div>
       </section>
     </>
+  );
+}
+
+function HeroSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+
+  return (
+    <section ref={ref} className="relative overflow-hidden">
+      <motion.img
+        src={heroImg}
+        alt="Athlete performing a heavy deadlift in a dark gym"
+        width={1600}
+        height={1200}
+        style={{ y }}
+        className="absolute inset-0 size-full object-cover object-center opacity-45"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
+      <div className="section-shell relative flex min-h-[88vh] flex-col justify-center py-24">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-xs font-bold uppercase tracking-[0.4em] text-accent"
+        >
+          {SITE.tagline}
+        </motion.p>
+        <h1 className="mt-5 max-w-3xl text-6xl uppercase leading-[0.9] sm:text-7xl lg:text-8xl">
+          <motion.span
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="block"
+          >
+            Build the body
+          </motion.span>
+          <motion.span
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="block text-gradient-gold"
+          >
+            discipline deserves
+          </motion.span>
+        </h1>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-6 max-w-xl text-lg text-muted-foreground"
+        >
+          Coach Ajaaz has guided {SITE.clientsServed} clients through fat loss, muscle gain and
+          sustainable nutrition — with plans built around real schedules and real food.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.55 }}
+          className="mt-9 flex flex-wrap gap-4"
+        >
+          <Link
+            to="/packages"
+            className="rounded-sm bg-accent px-8 py-4 text-sm font-bold uppercase tracking-widest text-accent-foreground transition-transform hover:scale-105"
+          >
+            View packages
+          </Link>
+          <a
+            href={SITE.youtube}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-sm border border-accent/60 px-8 py-4 text-sm font-bold uppercase tracking-widest text-accent transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
+            <Youtube className="size-4" /> Watch on YouTube
+          </a>
+        </motion.div>
+      </div>
+    </section>
   );
 }
