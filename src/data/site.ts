@@ -1,10 +1,14 @@
+import reel1 from "@/assets/gallery/reel-1.jpg";
+import reel2 from "@/assets/gallery/reel-2.jpg";
+import reel3 from "@/assets/gallery/reel-3.jpg";
+
 export const SITE = {
   name: "Ajaaz Fitmode",
   coach: "Ajaaz",
   tagline: "Certified Nutritionist & Fitness Coach",
   youtube: "https://www.youtube.com/@ajaaz.fitmode",
-  // TODO: replace with Ajaaz's real contact details
-  email: "coach@ajaazfitmode.com",
+  email: "ansariajaaz9@gmail.com",
+  instagram: "https://www.instagram.com/ajaaz.fitmode?igsh=MXR5MDNlMTQ5dGtiNg==",
   whatsapp: "+910000000000",
   clientsServed: "150+",
 };
@@ -108,5 +112,33 @@ export const FAQS = [
   {
     q: "How often do plans get updated?",
     a: "Training and nutrition are reviewed at every check-in and progressed at least once a month so you never plateau.",
+  },
+];
+
+export type Reel = {
+  url: string;
+  caption: string;
+  image: string;
+  likes: number;
+};
+
+export const REELS: Reel[] = [
+  {
+    url: "https://www.instagram.com/p/DT7zQ86jWys/",
+    caption: "Full-body finisher that leaves nothing left in the tank",
+    image: reel1,
+    likes: 482,
+  },
+  {
+    url: "https://www.instagram.com/ajaaz.fitmode/reel/DUI1LnEjdSQ/",
+    caption: "The cue that fixes shoulder pain on pressing movements",
+    image: reel2,
+    likes: 361,
+  },
+  {
+    url: "https://www.instagram.com/ajaaz.fitmode/reel/DUYRhfGCMa-/",
+    caption: "A real client transformation, explained in 30 seconds",
+    image: reel3,
+    likes: 597,
   },
 ];

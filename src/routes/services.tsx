@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Dumbbell, Salad, Flame, TrendingUp, Video, Moon } from "lucide-react";
 import { SectionHeading } from "@/components/site/Section";
+import { Reveal } from "@/components/site/Reveal";
 import { SERVICES } from "@/data/site";
 
 const ICONS = [Dumbbell, Salad, Flame, TrendingUp, Video, Moon];
@@ -29,7 +30,11 @@ function ServicesPage() {
     <div className="section-shell py-20">
       <SectionHeading
         eyebrow="What you get"
-        title={<>Coaching that <span className="text-gradient-gold">works in real life</span></>}
+        title={
+          <>
+            Coaching that <span className="text-gradient-gold">works in real life</span>
+          </>
+        }
         subtitle="Every service below is delivered personally by Ajaaz — no bots, no copy-paste PDFs."
       />
 
@@ -37,15 +42,14 @@ function ServicesPage() {
         {SERVICES.map((service, i) => {
           const Icon = ICONS[i % ICONS.length]!;
           return (
-            <article
-              key={service.title}
-              className="group relative overflow-hidden rounded-md border border-border bg-card p-7 transition-colors hover:border-accent"
-            >
-              <span className="absolute -right-6 -top-6 size-24 rounded-full bg-primary/25 blur-2xl transition-opacity group-hover:opacity-100" />
-              <Icon className="size-8 text-accent" />
-              <h3 className="mt-5 text-2xl uppercase">{service.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{service.body}</p>
-            </article>
+            <Reveal key={service.title} delay={i * 0.06} className="h-full">
+              <article className="group relative h-full overflow-hidden rounded-md border border-border bg-card p-7 transition-colors hover:border-accent">
+                <span className="absolute -right-6 -top-6 size-24 rounded-full bg-primary/25 blur-2xl transition-opacity group-hover:opacity-100" />
+                <Icon className="size-8 text-accent" />
+                <h3 className="mt-5 text-2xl uppercase">{service.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{service.body}</p>
+              </article>
+            </Reveal>
           );
         })}
       </div>
