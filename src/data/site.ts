@@ -6,7 +6,6 @@ export const SITE = {
   name: "Ajaaz Fitmode",
   coach: "Ajaaz",
   tagline: "Certified Nutritionist & Fitness Coach",
-  youtube: "https://www.youtube.com/@ajaaz.fitmode",
   email: "ansariajaaz9@gmail.com",
   instagram: "https://www.instagram.com/ajaaz.fitmode?igsh=MXR5MDNlMTQ5dGtiNg==",
   whatsapp: "+919930094758",

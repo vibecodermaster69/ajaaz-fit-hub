@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Youtube, Mail, MessageCircle, Instagram } from "lucide-react";
+import { Mail, MessageCircle, Instagram } from "lucide-react";
 import { SITE } from "@/data/site";
 import { InstagramFollowButton } from "@/components/site/InstagramFollowButton";
 
@@ -45,14 +45,6 @@ export function Footer() {
               className="flex items-center gap-2 hover:text-foreground"
             >
               <Instagram className="size-4" /> @ajaaz.fitmode
-            </a>
-            <a
-              href={SITE.youtube}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-2 hover:text-foreground"
-            >
-              <Youtube className="size-4" /> @ajaaz.fitmode
             </a>
             <a
               href={`mailto:${SITE.email}`}

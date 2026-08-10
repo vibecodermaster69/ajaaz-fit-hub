@@ -42,18 +42,9 @@ export function Header() {
             href={SITE.instagram}
             target="_blank"
             rel="noreferrer"
-            aria-label="Ajaaz Fitmode on Instagram"
-            className="text-muted-foreground transition-colors hover:text-accent"
+            className="flex items-center gap-2 rounded-sm bg-accent px-4 py-2 text-sm font-bold uppercase tracking-widest text-accent-foreground transition-transform hover:scale-105"
           >
-            <Instagram className="size-5" />
-          </a>
-          <a
-            href={SITE.youtube}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-sm bg-accent px-4 py-2 text-sm font-bold uppercase tracking-widest text-accent-foreground transition-transform hover:scale-105"
-          >
-            YouTube
+            <Instagram className="size-4" /> Follow
           </a>
         </nav>
 

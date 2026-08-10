@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Instagram, Check, Dumbbell, Salad, Flame } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
-import coachImg from "@/assets/coach.jpg";
+import coachImg from "@/assets/coach.png";
 import gallery1 from "@/assets/gallery/gallery-01.jpg";
 import gallery2 from "@/assets/gallery/gallery-02.jpg";
 import gallery3 from "@/assets/gallery/gallery-03.jpg";

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Youtube, Mail, MessageCircle, Send } from "lucide-react";
+import { Instagram, Mail, MessageCircle, Send } from "lucide-react";
 import { toast } from "sonner";
 import { SectionHeading } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Send your goal to Ajaaz on WhatsApp, email or YouTube and get a personalised fitness and nutrition plan.",
+          "Send your goal to Ajaaz on WhatsApp, email or Instagram and get a personalised fitness and nutrition plan.",
       },
       { property: "og:title", content: "Get in Touch | Ajaaz Fitmode" },
       {
@@ -163,14 +163,14 @@ function ContactPage() {
               </span>
             </a>
             <a
-              href={SITE.youtube}
+              href={SITE.instagram}
               target="_blank"
               rel="noreferrer"
               className="flex items-start gap-4 rounded-md border border-border bg-card p-6 transition-colors hover:border-accent"
             >
-              <Youtube className="size-6 text-accent" />
+              <Instagram className="size-6 text-accent" />
               <span>
-                <span className="block font-display text-2xl uppercase">YouTube</span>
+                <span className="block font-display text-2xl uppercase">Instagram</span>
                 <span className="text-sm text-muted-foreground">
                   @ajaaz.fitmode — free workouts & tips
                 </span>
